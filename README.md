@@ -1,1 +1,1 @@
-Link JDK 8 64-bit: https://www.azul.com/downloads/zulu-community/?&version=java-8-lts&os=&os=windows&architecture=x86-64-bit&package=jdk
+Link JDK 8: https://www.azul.com/downloads/zulu-community/?&version=java-8-lts&os=&os=windows&package=jdk
