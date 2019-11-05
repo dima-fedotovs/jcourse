@@ -6,8 +6,10 @@ public class ArrayDemo {
         int arraySize = 10;
         int a[] = new int[arraySize];
 
+        int c = 7;
+
         for (int i = 0; i < a.length; i++) {
-            a[i] = i * 7;
+            a[i] = i * c;
         }
 
         for (int i = 0; i < a.length; i++) {
