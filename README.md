@@ -1,4 +1,5 @@
-### Java Course
+### Java Course 
+Some text here
 
 #### Resources
 
