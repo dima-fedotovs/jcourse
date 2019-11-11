@@ -10,7 +10,6 @@ IDE Reference card: https://resources.jetbrains.com/storage/products/intellij-id
 
 Link for Git: https://git-scm.com/download/win
 
-Lesson 6
 
 ##### Задания по массивам
 * ArrayTask1:  
