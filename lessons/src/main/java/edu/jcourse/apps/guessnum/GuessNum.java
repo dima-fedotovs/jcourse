@@ -25,7 +25,7 @@ public class GuessNum {
         int myNum = random.nextInt(100) + 1;
 
         for (int i = 0; i < 10; i++) {
-            int userNum = askNum(i+1);
+            int userNum = askNum(i + 1);
             if (userNum == myNum) {
                 System.out.println("You win!");
                 break;
@@ -40,11 +40,15 @@ public class GuessNum {
     }
 
     static int askNum(int tryNr) {
-        while(true) {
+        while (true) {
             try {
                 System.out.printf("Try #%d. Enter your number: ", tryNr);
                 int num = scanner.nextInt();
-                return num;
+                if (num < 0 || num > 100) {
+                    System.out.println("You have to enter number from 1 to 100");
+                } else {
+                    return num;
+                }
             } catch (InputMismatchException ex) {
                 System.out.println("Oh! It isn't a number");
                 scanner.next();
