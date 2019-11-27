@@ -19,21 +19,32 @@ public class GuessNum {
            c. Угадал
         5. Дать пользователю 10 попыток на то чтобы угадать (for i)
         6. Если пользователь угадал - break (досрочный выход из цикла)
+        7. Валидация ввода (если ввел буквы, а не цифры)
+        8. (Домашка) Валидация ввода - если ввел в неправильном диапазоне (меньше 1 или больше 100)
+        9. Бесконечно повторяющиеся партии - закончили одну игру началась новая с новым случайным числом
          */
 
         Random random = new Random();
-        int myNum = random.nextInt(100) + 1;
 
-        for (int i = 0; i < 10; i++) {
-            int userNum = askNum(i + 1);
-            if (userNum == myNum) {
-                System.out.println("You win!");
-                break;
+        while(true) {
+            int myNum = random.nextInt(100) + 1;
+
+            boolean isLooser = true;
+            for (int i = 0; i < 10; i++) {
+                int userNum = askNum(i + 1);
+                if (userNum == myNum) {
+                    isLooser = false;
+                    System.out.println("You win!");
+                    break;
+                }
+                if (userNum > myNum) {
+                    System.out.println("My num is less than yours");
+                } else {
+                    System.out.println("My num is greater than yours");
+                }
             }
-            if (userNum > myNum) {
-                System.out.println("My num is less than yours");
-            } else {
-                System.out.println("My num is greater than yours");
+            if (isLooser) {
+                System.out.println("You lost, my friend, the number was " + myNum);
             }
         }
 
