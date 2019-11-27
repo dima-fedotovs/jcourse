@@ -46,8 +46,13 @@ public class GuessNum {
             if (isLooser) {
                 System.out.println("You lost, my friend, the number was " + myNum);
             }
+            System.out.println("Do you want to play new game? (y/n)");
+            String answer = scanner.next();
+            if (answer.equals("n")) {
+                break;
+            }
         }
-
+        System.out.println("Good bye!");
     }
 
     static int askNum(int tryNr) {
