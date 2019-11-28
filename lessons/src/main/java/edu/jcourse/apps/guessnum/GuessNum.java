@@ -54,6 +54,7 @@ public class GuessNum {
                     GameResult res = new GameResult();
                     res.name = name;
                     res.triesCount = i + 1;
+                    res.time = gameEnd - gameStart;
                     leaderBoard.add(res);
                     isLooser = false;
                     System.out.println("You win!");
@@ -76,7 +77,7 @@ public class GuessNum {
         }
         System.out.println("Our leaders:");
         for(GameResult n : leaderBoard) {
-            System.out.println(n.name + " " + n.triesCount);
+            System.out.printf("%s %d %.1f%n", n.name, n.triesCount, n.time/1000.0);
         }
         System.out.println("Good bye!");
     }
