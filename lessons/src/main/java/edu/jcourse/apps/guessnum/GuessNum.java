@@ -37,7 +37,7 @@ public class GuessNum {
         Random random = new Random();
         ArrayList<GameResult> leaderBoard = new ArrayList<>();
 
-        while(true) {
+        while (true) {
             int myNum = random.nextInt(100) + 1;
             System.out.println(myNum);
 
@@ -52,9 +52,9 @@ public class GuessNum {
                 if (userNum == myNum) {
                     long gameEnd = System.currentTimeMillis();
                     GameResult res = new GameResult();
-                    res.name = name;
-                    res.triesCount = i + 1;
-                    res.time = gameEnd - gameStart;
+                    res.setName(name);
+                    res.setTriesCount(i + 1);
+                    res.setTime(gameEnd - gameStart);
                     leaderBoard.add(res);
                     isLooser = false;
                     System.out.println("You win!");
@@ -76,8 +76,8 @@ public class GuessNum {
             }
         }
         System.out.println("Our leaders:");
-        for(GameResult n : leaderBoard) {
-            System.out.printf("%s %d %.1f%n", n.name, n.triesCount, n.time/1000.0);
+        for (GameResult n : leaderBoard) {
+            System.out.printf("%s %d %.1f%n", n.getName(), n.getTriesCount(), n.getTime() / 1000.0);
         }
         System.out.println("Good bye!");
     }
