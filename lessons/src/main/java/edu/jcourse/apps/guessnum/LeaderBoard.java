@@ -15,17 +15,36 @@ public class LeaderBoard {
         leaderBoard.add(result);
     }
 
+    // вариант со стримом и функциональным программированием
+    public void print() {
+        System.out.println("Our leaders:");
+        leaderBoard.stream()
+                .sorted(Comparator
+                        .comparingInt(GameResult::getTriesCount)
+                        .thenComparingLong(GameResult::getTime))
+//                .filter(result -> result.getTriesCount() == 3)
+                .limit(5)
+                .forEach(result ->
+                        System.out.printf("%s %d %.1f%n",
+                                result.getName(),
+                                result.getTriesCount(),
+                                result.getTime() / 1000.0));
+    }
+
+    // вариант с циклом со счетчиком
     public void print2() {
         System.out.println("Our leaders:");
         leaderBoard.sort(Comparator
                 .comparingInt(GameResult::getTriesCount)
                 .thenComparingLong(GameResult::getTime));
-        for (int i = 0; i < Math.min(5, leaderBoard.size()); i++) {
+        int size = Math.min(5, leaderBoard.size());
+        for (int i = 0; i < size; i++) {
             GameResult n = leaderBoard.get(i);
             System.out.printf("%s %d %.1f%n", n.getName(), n.getTriesCount(), n.getTime() / 1000.0);
         }
     }
 
+    // вариант с циклом foreach и счетчиком
     public void print3() {
         System.out.println("Our leaders:");
         leaderBoard.sort(Comparator
@@ -41,6 +60,7 @@ public class LeaderBoard {
         }
     }
 
+    // вариант с sublist
     public void print4() {
         System.out.println("Our leaders:");
         leaderBoard.sort(Comparator
@@ -51,22 +71,6 @@ public class LeaderBoard {
         for (GameResult n : leaderBoard.subList(0, size)) {
             System.out.printf("%s %d %.1f%n", n.getName(), n.getTriesCount(), n.getTime() / 1000.0);
         }
-    }
-
-    public void print() {
-        System.out.println("Our leaders:");
-        leaderBoard.stream()
-                .sorted(Comparator
-                        .comparingInt(GameResult::getTriesCount)
-                        .thenComparingLong(GameResult::getTime))
-//                .filter(result -> result.getTriesCount() == 3)
-                .limit(5)
-                .forEach(result ->
-                        System.out.printf("%s %d %.1f%n",
-                                result.getName(),
-                                result.getTriesCount(),
-                                result.getTime() / 1000.0));
-
     }
 
     public void save() {
