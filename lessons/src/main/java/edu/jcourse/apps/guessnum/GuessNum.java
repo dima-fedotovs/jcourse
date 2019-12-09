@@ -27,15 +27,30 @@ import java.util.Scanner;
     leaderBoard (System.currentTimeMillis)
 16. (домашка) Валидация ввода ответа на вопрос, хочет ли пользователь еще одну партию.
     Можно ответить "y" или "n" - остальные варианты считаются ошибочными и вопрос повторяется.
+---------------
+9 Декабря 2019
+---------------
+17. (Самостоятельно) После игры, когда пользователь ответил, что он не хочет больше играть,
+    сохранить таблицу рекордов в файл. (создать метод saveLeaderboard(...))
+18. Создать класс LeaderBoard для всех манипуляций с таблицей рекордов
+    - добавить результат
+    - вывести на экран
+    - сохранить в файл
+    - прочитать из файла
+19. Модифицировать GuessNum для работы с LeaderBoard
+20. Сортировка таблицы рекордов в LeaderBoard.print
+21. (самостоятельно) придумать способ ограничить таблицу рекордов при выводе
+    на экран - показывать только 5 самых лучших.
 */
 public class GuessNum {
     static Scanner scanner = new Scanner(System.in);
 
-
     public static void main(String[] args) {
 
         Random random = new Random();
-        ArrayList<GameResult> leaderBoard = new ArrayList<>();
+
+        LeaderBoard leaders = new LeaderBoard();
+        leaders.load();
 
         while(true) {
             int myNum = random.nextInt(100) + 1;
@@ -52,10 +67,10 @@ public class GuessNum {
                 if (userNum == myNum) {
                     long gameEnd = System.currentTimeMillis();
                     GameResult res = new GameResult();
-                    res.name = name;
-                    res.triesCount = i + 1;
-                    res.time = gameEnd - gameStart;
-                    leaderBoard.add(res);
+                    res.setName(name);
+                    res.setTriesCount(i + 1);
+                    res.setTime(gameEnd - gameStart);
+                    leaders.add(res);
                     isLooser = false;
                     System.out.println("You win!");
                     break;
@@ -75,10 +90,10 @@ public class GuessNum {
                 break;
             }
         }
-        System.out.println("Our leaders:");
-        for(GameResult n : leaderBoard) {
-            System.out.printf("%s %d %.1f%n", n.name, n.triesCount, n.time/1000.0);
-        }
+
+        leaders.print();
+        leaders.save();
+
         System.out.println("Good bye!");
     }
 
