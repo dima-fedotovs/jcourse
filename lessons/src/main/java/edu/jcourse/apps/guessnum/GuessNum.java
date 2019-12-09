@@ -52,7 +52,7 @@ public class GuessNum {
         LeaderBoard leaders = new LeaderBoard();
         leaders.load();
 
-        while(true) {
+        do {
             int myNum = random.nextInt(100) + 1;
             System.out.println(myNum);
 
@@ -84,12 +84,7 @@ public class GuessNum {
             if (isLooser) {
                 System.out.println("You lost, my friend, the number was " + myNum);
             }
-            System.out.println("Do you want to play new game? (y/n)");
-            String answer = scanner.next();
-            if (answer.equals("n")) {
-                break;
-            }
-        }
+        } while (askYesNo("Do you want to play new game? (y/n)"));
 
         leaders.print();
         leaders.save();
@@ -114,4 +109,17 @@ public class GuessNum {
         }
     }
 
+    static boolean askYesNo(String msg) {
+        while (true) {
+            System.out.println(msg);
+            String answer = scanner.next();
+            boolean isY = answer.equalsIgnoreCase("y");
+            boolean isN = answer.equalsIgnoreCase("n");
+            if (isY || isN) {
+                return isY;
+            }
+            System.out.println("Enter 'y' or 'n'");
+        }
+
+    }
 }
