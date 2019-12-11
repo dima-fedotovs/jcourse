@@ -55,6 +55,9 @@ public class Notepad {
                 case "create":
                     createRecord();
                     break;
+                case "list":
+                    list();
+                    break;
                 case "exit":
                     System.out.println("good bye!");
                     return;
@@ -81,6 +84,12 @@ public class Notepad {
         record.setEmail(email);
 
         records.add(record);
+    }
+
+    static void list() {
+        for (Record r : records) {
+            System.out.println(r);
+        }
     }
 
     static String askString(String message) {
