@@ -26,7 +26,9 @@ step 2:
         -- phoneNumber (номер телефона)
         -- email (емейл)
     (подсказка: смотреть guessnum.GameResult)
-
+step 3:
+    Добавить новую команду "create" для выполнения которой,
+    будет вызываться метод createRecord()
  */
 public class Notepad {
     static final Scanner scanner = new Scanner(System.in);
@@ -46,6 +48,10 @@ public class Notepad {
                     System.out.println("error: unknown command!");
             }
         }
+    }
+
+    static void createRecord() {
+
     }
 
     static void help() {
