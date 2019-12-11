@@ -64,6 +64,10 @@ public class Notepad {
         }
     }
 
+    static void help() {
+        System.out.println("This could be very helpful text");
+    }
+
     static void createRecord() {
         String firstName = askString("first name: ");
         String lastName = askString("last name: ");
@@ -82,8 +86,5 @@ public class Notepad {
     static String askString(String message) {
         System.out.print(message);
         return scanner.next();
-    }
-    static void help() {
-        System.out.println("This could be very helpful text");
     }
 }
