@@ -1,13 +1,15 @@
 package edu.jcourse.apps.notepad;
 
 public class Record {
-    private static int counter;
+    private static int counter; // статическая переменная одна для всех
+    // не статические переменные - для каждого объекта свои
     private int id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String email;
 
+    // Конструктор - вызывается при создании объекта
     public Record() {
         counter++;
         id = counter;
