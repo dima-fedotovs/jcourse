@@ -1,10 +1,21 @@
 package edu.jcourse.apps.notepad;
 
 public class Record {
+    private static int counter;
+    private int id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String email;
+
+    public Record() {
+        counter++;
+        id = counter;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -40,10 +51,12 @@ public class Record {
 
     @Override
     public String toString() {
-        return String.format("%s %s %s %s",
+        return String.format("%d %s %s %s %s %d",
+                id,
                 firstName,
                 lastName,
                 phoneNumber,
-                email);
+                email,
+                counter);
     }
 }

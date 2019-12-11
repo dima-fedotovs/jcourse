@@ -39,6 +39,10 @@ step 5:
     сохранить созданный рекорд в методе createMethod в этот список
 step 6:
     Новая команда - list - печатает на экран все имеющиеся рекорды
+step 7:
+    Статические переменные - автоматический подсчет айдишек для рекорда
+    см Record id и counter
+    Конструктор - см Record()
  */
 public class Notepad {
     static final Scanner scanner = new Scanner(System.in);
