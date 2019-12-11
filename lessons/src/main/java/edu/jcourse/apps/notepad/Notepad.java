@@ -29,6 +29,10 @@ step 2:
 step 3:
     Добавить новую команду "create" для выполнения которой,
     будет вызываться метод createRecord()
+step 4:
+    в createRecord опросить пользователя - собрать все данные для
+    record (имя, фамилия, и т.д.)
+    создать новый объект класса Record и наполнить его введенными данными
  */
 public class Notepad {
     static final Scanner scanner = new Scanner(System.in);
@@ -41,6 +45,9 @@ public class Notepad {
                 case "help":
                     help();
                     break;
+                case "create":
+                    createRecord();
+                    break;
                 case "exit":
                     System.out.println("good bye!");
                     return;
@@ -51,9 +58,23 @@ public class Notepad {
     }
 
     static void createRecord() {
+        String firstName = askString("first name: ");
+        String lastName = askString("last name: ");
+        String phone = askString("phone: ");
+        String email = askString("email: ");
+
+        Record record = new Record();
+        record.setFirstName(firstName);
+        record.setLastName(lastName);
+        record.setPhoneNumber(phone);
+        record.setEmail(email);
 
     }
 
+    static String askString(String message) {
+        System.out.print(message);
+        return scanner.next();
+    }
     static void help() {
         System.out.println("This could be very helpful text");
     }
