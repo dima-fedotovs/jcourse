@@ -15,6 +15,7 @@ public class Record {
         id = counter;
     }
 
+    // Только геттер - только для чтения
     public int getId() {
         return id;
     }
