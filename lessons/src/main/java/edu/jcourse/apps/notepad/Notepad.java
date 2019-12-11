@@ -2,14 +2,32 @@ package edu.jcourse.apps.notepad;
 
 import java.util.Scanner;
 
-// Самостоятельно:
-// command loop:
-// бесконечный цикл
-// в нем у пользователья запрашивается команда
-// при помощи switch-case вызывается метод для выполнения
-// этой команды
-// -- exit
-// -- help
+/*
+Все делать самостоятельно:
+step 1:
+    command loop - это бесконечный цикл
+    в нем у пользователья запрашивается команда;
+    при помощи switch-case вызывается метод для выполнения
+    этой команды
+    Сделать команды:
+        -- exit
+        -- help
+    Пример запуска:
+        enter command> help
+        this is very helpful manual....
+        enter command> help
+        this is very helpful manual....
+        enter command> exit
+        good bye!
+step 2:
+    создать класс Record в котором будут объявлены свойства:
+        -- firstName (имя персоны)
+        -- lastName (фамилия)
+        -- phoneNumber (номер телефона)
+        -- email (емейл)
+    (подсказка: смотреть guessnum.GameResult)
+
+ */
 public class Notepad {
     static final Scanner scanner = new Scanner(System.in);
 
@@ -34,16 +52,3 @@ public class Notepad {
         System.out.println("This could be very helpful text");
     }
 }
-
-// Пример запуска
-/*
-enter command> help
-this is program to executes....
-enter command> help
-this is program to executes....
-enter command> exit
-good bye
-
-
-
- */
