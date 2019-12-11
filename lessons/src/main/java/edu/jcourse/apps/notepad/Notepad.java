@@ -1,5 +1,6 @@
 package edu.jcourse.apps.notepad;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
@@ -33,9 +34,15 @@ step 4:
     в createRecord опросить пользователя - собрать все данные для
     record (имя, фамилия, и т.д.)
     создать новый объект класса Record и наполнить его введенными данными
+step 5:
+    Объявить переменную для хранения списка рекордов - records - ArrayList
+    сохранить созданный рекорд в методе createMethod в этот список
+step 6:
+    Новая команда - list - печатает на экран все имеющиеся рекорды
  */
 public class Notepad {
     static final Scanner scanner = new Scanner(System.in);
+    static final ArrayList<Record> records = new ArrayList<>();
 
     public static void main(String[] args) {
         while (true) {
@@ -69,6 +76,7 @@ public class Notepad {
         record.setPhoneNumber(phone);
         record.setEmail(email);
 
+        records.add(record);
     }
 
     static String askString(String message) {
