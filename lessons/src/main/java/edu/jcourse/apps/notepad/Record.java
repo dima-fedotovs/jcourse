@@ -1,13 +1,9 @@
 package edu.jcourse.apps.notepad;
 
-public class Record {
+public abstract class Record {
     private static int counter; // статическая переменная одна для всех
     // не статические переменные - для каждого объекта свои
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private String email;
+    private final int id;
 
     // Конструктор - вызывается при создании объекта
     public Record() {
@@ -15,51 +11,14 @@ public class Record {
         id = counter;
     }
 
+    /**
+     * This method should ask user's data
+     */
+    public abstract void askData();
+
     // Только геттер - только для чтения
     public int getId() {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%d %s %s %s %s %d",
-                id,
-                firstName,
-                lastName,
-                phoneNumber,
-                email,
-                counter);
-    }
 }

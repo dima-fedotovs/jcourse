@@ -76,18 +76,24 @@ public class Notepad {
     }
 
     static void createRecord() {
-        String firstName = askString("first name: ");
-        String lastName = askString("last name: ");
-        String phone = askString("phone: ");
-        String email = askString("email: ");
+        String type = askString("enter type: ");
+        switch (type) {
+            case "person":
+                create(new PersonRecord());
+                break;
+            case "note":
+                create(new NoteRecord());
+                break;
+            default:
+                System.out.println("error: unknown type");
+        }
+    }
 
-        Record record = new Record();
-        record.setFirstName(firstName);
-        record.setLastName(lastName);
-        record.setPhoneNumber(phone);
-        record.setEmail(email);
-
-        records.add(record);
+    private static void create(Record aRecord) {
+        aRecord.askData();
+        records.add(aRecord);
+        System.out.println("Created");
+        System.out.println(aRecord);
     }
 
     static void list() {
