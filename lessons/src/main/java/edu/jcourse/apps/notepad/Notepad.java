@@ -1,5 +1,7 @@
 package edu.jcourse.apps.notepad;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -46,6 +48,10 @@ step 7: Новая тема
     Конструктор - см Record()
  */
 public class Notepad {
+    public static final String STR_TIME_PATTERN = "HH:mm";
+    public static final DateTimeFormatter TIME_PATTERN
+            = DateTimeFormatter.ofPattern(STR_TIME_PATTERN);
+
     static final Scanner scanner = new Scanner(System.in);
     static final ArrayList<Record> records = new ArrayList<>();
 
@@ -85,6 +91,9 @@ public class Notepad {
             case "note":
                 create(new NoteRecord());
                 break;
+            case "alarm":
+                create(new AlarmRecord());
+                break;
             default:
                 System.out.println("error: unknown type");
         }
@@ -103,11 +112,6 @@ public class Notepad {
         }
     }
 
-    static String askString(String message) {
-        System.out.print(message);
-        return scanner.next();
-    }
-
     static String askStringLine(String message) {
         System.out.print(message);
         Pattern delim = scanner.delimiter();
@@ -115,5 +119,15 @@ public class Notepad {
         String result = scanner.next();
         scanner.useDelimiter(delim);
         return result;
+    }
+
+    static String askString(String message) {
+        System.out.print(message);
+        return scanner.next();
+    }
+
+    public static LocalTime askTime(String message) {
+        String strTime = askString(message + " " + STR_TIME_PATTERN + " ");
+        return LocalTime.parse(strTime, TIME_PATTERN);
     }
 }
