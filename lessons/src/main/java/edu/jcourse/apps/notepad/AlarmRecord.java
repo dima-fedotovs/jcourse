@@ -8,7 +8,7 @@ public class AlarmRecord extends NoteRecord {
     @Override
     public void askData() {
         time = Notepad.askTime("time: ");
-        
+
         super.askData();
     }
 
@@ -22,9 +22,8 @@ public class AlarmRecord extends NoteRecord {
 
     @Override
     public String toString() {
-        return String.format("%d %s %s",
-                getId(),
-                time.format(Notepad.TIME_PATTERN),
-                getText());
+        return String.format("%s %s",
+                super.toString(),
+                time.format(Notepad.TIME_PATTERN));
     }
 }
