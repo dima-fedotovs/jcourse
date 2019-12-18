@@ -9,9 +9,9 @@ public class PersonRecord extends Record {
 
     @Override
     public void askData() {
-        firstName = Notepad.askString("first name: ");
-        lastName = Notepad.askString("last name: ");
-        phoneNumber = Notepad.askString("phone: ");
+        firstName = Notepad.askStringLine("first name: ");
+        lastName = Notepad.askStringLine("last name: ");
+        phoneNumber = Notepad.askStringLine("phone: ");
         email = Notepad.askString("email: ");
     }
 

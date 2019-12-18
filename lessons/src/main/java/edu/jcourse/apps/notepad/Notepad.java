@@ -2,6 +2,7 @@ package edu.jcourse.apps.notepad;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /*
 Все делать самостоятельно:
@@ -105,5 +106,14 @@ public class Notepad {
     static String askString(String message) {
         System.out.print(message);
         return scanner.next();
+    }
+
+    static String askStringLine(String message) {
+        System.out.print(message);
+        Pattern delim = scanner.delimiter();
+        scanner.useDelimiter("\n");
+        String result = scanner.next();
+        scanner.useDelimiter(delim);
+        return result;
     }
 }

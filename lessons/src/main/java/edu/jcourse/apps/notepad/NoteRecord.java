@@ -5,7 +5,7 @@ public class NoteRecord extends Record {
 
     @Override
     public void askData() {
-        text = Notepad.askString("text: ");
+        text = Notepad.askStringLine("text: ");
     }
 
     public String getText() {
