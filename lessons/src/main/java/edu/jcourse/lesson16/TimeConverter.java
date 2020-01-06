@@ -1,11 +1,10 @@
 package edu.jcourse.lesson16;
 
-import java.time.DateTimeException;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -24,8 +23,31 @@ public class TimeConverter {
 
         ZoneId departureZone = askZone("Enter departure zone");
         LocalDateTime departureDT = askDateTime("Enter departure date and time");
+
         ZoneId destinationZone = askZone("Enter destination zone");
         LocalDateTime destinationDT = askDateTime("Enter destination date and time");
+
+        ZonedDateTime departure
+                = ZonedDateTime.ofLocal(departureDT, departureZone, null);
+
+        ZonedDateTime destination
+                = ZonedDateTime.ofLocal(destinationDT, destinationZone, null);
+
+        Duration duration = Duration.between(departure, destination);
+
+//        System.out.println(duration);
+
+        long seconds = duration.getSeconds();
+        long hours = seconds / 3600;
+        long minutes = (seconds / 60) % 60;
+
+        System.out.printf("Flight's duration is %d hours and %d minutes%n", hours, minutes);
+
+        // Europe/Riga
+        // 06.01.2020 10:00
+        // Europe/Moscow
+        // 06.01.2020 12:00
+
 
 
     }
